@@ -3,6 +3,8 @@ package com.project.postgresql;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -18,14 +20,22 @@ public class UserEntity {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "date_naissance")
+    private Date dateNaissance;
+
+    @Column(name = "lieu_naissance")
+    private Date lieuNaissance;
+
 
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String username, String email) {
+    public UserEntity(Long id, String username, String email, Date dateNaissance, Date lieuNaissance) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
     }
 
     public Long getId() {
@@ -50,5 +60,21 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        dateNaissance = dateNaissance;
+    }
+
+    public Date getLieuNaissance() {
+        return lieuNaissance;
+    }
+
+    public void setLieuNaissance(Date lieuNaissance) {
+        this.lieuNaissance = lieuNaissance;
     }
 }
