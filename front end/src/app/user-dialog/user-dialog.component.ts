@@ -12,8 +12,11 @@ export class UserDialogComponent implements OnInit {
   // @ts-ignore
   userFormGroup: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<UserDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: string) {
-  }
+  constructor(
+    public dialogRef: MatDialogRef<UserDialogComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: string
+  ) 
+  { }
 
   ngOnInit(): void {
     this.userFormGroup = new FormGroup({

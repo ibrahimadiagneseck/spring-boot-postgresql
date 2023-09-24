@@ -14,11 +14,13 @@ export class AppComponent {
   displayedColumns = ['id', 'firstname', 'lastname', 'Actions'];
   data = [];
 
-  constructor(private http: HttpClient, public dialog: MatDialog) {
-  }
+  constructor(
+    private http: HttpClient, 
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:8080/user/findAll').subscribe({
+    this.http.get<any>('http://localhost:8081/user/findAll').subscribe({
       next: data => {
         this.data = data;
       },
@@ -41,7 +43,7 @@ export class AppComponent {
           lastname: result.value.lastname
         }
 
-        this.http.post<any>('http://localhost:8080/user/createUser', body).subscribe({
+        this.http.post<any>('http://localhost:8081/user/createUser', body).subscribe({
           next: data => {
             this.ngOnInit();
           },
@@ -66,7 +68,7 @@ export class AppComponent {
           lastname: result.value.lastname
         }
 
-        this.http.put<any>('http://localhost:8080/user/updateUser/' + element.id, body).subscribe({
+        this.http.put<any>('http://localhost:8081/user/updateUser/' + element.id, body).subscribe({
           next: data => {
             this.ngOnInit();
           },
@@ -79,7 +81,7 @@ export class AppComponent {
   }
 
   onDelete(element: any) {
-    this.http.delete<any>('http://localhost:8080/user/deleteUser/' + element.id).subscribe({
+    this.http.delete<any>('http://localhost:8081/user/deleteUser/' + element.id).subscribe({
       next: data => {
         this.ngOnInit();
       },
